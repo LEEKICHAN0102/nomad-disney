@@ -54,7 +54,7 @@ interface ICharacterObj{
 }
 
 function Home(){
-  const { isLoading, data } = useQuery<ICharacterObj[]>("allCharacter", fetchCharacter);
+  const { isLoading, data } = useQuery<ICharacterObj[]>("allCharacters", fetchCharacter);
   return (
     <Container>
       <Header>
@@ -64,7 +64,7 @@ function Home(){
         <Loader>"Loading Characters..."</Loader>
       ) : (
         data?.slice(0,100).map((character) => (
-          <Link to={`character/${character.id}`} key={character.id}>
+          <Link to={`character/${character.id}`} state={character.id} key={character.id}>
             <CharacterBox>
               <CharacterImg src={character.imageUrl}></CharacterImg>
               <CharacterName>{character.name}</CharacterName>

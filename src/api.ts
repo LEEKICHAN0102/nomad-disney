@@ -6,8 +6,8 @@ export function fetchCharacter() {
   );
 }
 
-export function fetchCharacterDetail(characterId:number) {
-  return fetch(`${BASE_URL}/${characterId}`).then((response) =>
+export function fetchCharacterDetail(id:number) {
+  return fetch(`${BASE_URL}/${id}`).then((response) =>
     response.json()
   );
 }
