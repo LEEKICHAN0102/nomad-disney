@@ -98,16 +98,16 @@ function Detail () {
       {isLoading ? (
         <Loader>"Loading Character's Detail..."</Loader>
       ): (
-        <DetailCharacterBox>
-          <img src={data?.imageUrl} alt="🐭"></img>
-            <ul>
-              {data?.films.map((film) => (
-                <FilmsBox>
-                    <li key={film}>{film}</li>
-                </FilmsBox>
-                ))}
-            </ul>
-        </DetailCharacterBox>
+      <DetailCharacterBox>
+        <img src={data?.imageUrl} alt="🐭"></img>
+          <ul>
+            {data?.films.map((film) => (
+              <FilmsBox>
+                  <li key={film}>{film}</li>
+              </FilmsBox>
+              ))}
+          </ul>
+      </DetailCharacterBox>
       )}
       <LinkBox>
           {data?.sourceUrl && (
