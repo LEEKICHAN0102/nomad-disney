@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useQuery } from "react-query";
 import { fetchCharacterDetail } from "../api";
-import { useParams,Link } from "react-router-dom";
+import { useParams,Link,useNavigate } from "react-router-dom";
 
 const Container =styled.div`
   padding: 0px 20px;
@@ -17,6 +17,20 @@ const Header=styled.header`
   justify-content:center;
   align-items:center;
   margin-top:50px;
+`;
+
+const GoBackButton = styled.button`
+  padding: 20px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  :hover {
+    background-color: tomato;
+    transition: ease-in-out 0.2s;
+  }
 `;
 
 const Loader = styled.span`
@@ -88,6 +102,10 @@ interface ICharacterDetail{
 function Detail () {
   const {id}=useParams();
   console.log(id);
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/");
+  };
   const { isLoading, data } = useQuery<ICharacterDetail>(String(id), () => fetchCharacterDetail(Number(id)));
   console.log(data);
   return  (
@@ -116,6 +134,7 @@ function Detail () {
               <div>
                 <Link to={data?.sourceUrl}>{data?.sourceUrl}</Link>
               </div>
+              <GoBackButton onClick={goBack}>Go Back</GoBackButton>
             </span>
           )}
       </LinkBox>
